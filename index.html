@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <input type="text" name="input-text" id="input-text">
+    <button type="button" onclick="pow()">Pow</button>
+    <button type="button" onclick="concat()">Concat</button>
+    <h2 id="demo"></h2>
+  </div>
+
+  <script>
+
+    function ajaxCall(path) {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        document.getElementById("demo").innerHTML = this.responseText;
+        }
+      xhttp.open("GET", path, true);
+      xhttp.send();
+    }
+
+    function pow() {
+      var inputValue = document.getElementById("input-text").value;
+      if (inputValue != "") {
+        var path = "pow/" + inputValue;
+        ajaxCall(path);
+      }
+    }
+
+    function concat() {
+      var inputValue = document.getElementById("input-text").value;
+      if (inputValue != "") {
+        var path = "concat/" + inputValue;
+        ajaxCall(path);
+      }
+    }
+  </script>
+</body>
+</html>
